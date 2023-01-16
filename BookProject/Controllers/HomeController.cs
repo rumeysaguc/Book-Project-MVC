@@ -6,6 +6,7 @@ namespace BookProject.Controllers
     {
         public IActionResult Index()
         {
+            ViewBag.exp = TempData["MESSAGE"].ToString();
             return View();
         }
     }
