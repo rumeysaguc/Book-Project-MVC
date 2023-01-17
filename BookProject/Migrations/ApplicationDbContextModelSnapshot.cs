@@ -38,6 +38,9 @@ namespace BookProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("Price")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("PublishTime")
                         .HasColumnType("datetime2");
 
@@ -48,7 +51,7 @@ namespace BookProject.Migrations
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
