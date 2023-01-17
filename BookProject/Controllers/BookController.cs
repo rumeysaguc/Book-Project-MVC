@@ -2,6 +2,7 @@
 using BookProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 using static System.Net.Mime.MediaTypeNames;
@@ -47,6 +48,7 @@ namespace BookProject.Controllers
 			ViewBag.messages = "Create new Book!";
 			return RedirectToAction("Index", "Home");
 		}
+		
 		public int id;
 		[HttpPost]
 		public IActionResult DeleteBook()
@@ -76,5 +78,17 @@ namespace BookProject.Controllers
 				return RedirectToAction("Index", "Home");
 			}
 		}
-    }
+
+		[HttpPost]
+		public IActionResult EditBook(BookModel model)
+		{
+			BookModel b = context.Books.Where(s=> s.Id == model.Id).First();
+			b.Author = model.Author; b.Title = model.Title;
+			b.Description = model.Description;
+			b.PublishTime = model.PublishTime;
+			context.SaveChanges();
+			return RedirectToAction("BookList", "Book");
+
+		}
+	}
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookProject.Models
 {
@@ -11,6 +12,8 @@ namespace BookProject.Models
         public string Description { get; set; } = string.Empty;
         public string Author { get; set; } = string.Empty;
 		public string Publisher { get; set; } = string.Empty;
+        [Precision(16, 1)]
+		public decimal? Price { get; set; }
 		public DateTime PublishTime { get; set; }
 
     }
